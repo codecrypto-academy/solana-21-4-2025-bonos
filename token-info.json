@@ -1,28 +1,28 @@
 {
   "wallets": {
     "emisorEuroCC": {
-      "publicKey": "8Q1i19uaxcRwv76KD2oSo1XcSA7cN8RLtotpJwm5nJJg"
+      "publicKey": "2uYnnvquqs8rukZJm9xvicXzhNHZXm43piGZkBK6Ndx7"
     },
     "emisorBonoDeuda": {
-      "publicKey": "7Uy4aUhems1PSCo7V9NFtxndkRKDvpyPFs38TWyd1e3F"
+      "publicKey": "3G4Ss3KjoWfKK2xxV92VP67eVUf3w8dhHksLhuDYf48h"
     },
     "adquirente1": {
-      "publicKey": "FinTcfn4zAMGzUDydfahkUUU8wb6TFh8JiFkphbpVn82"
+      "publicKey": "AXuFr2op3ehKM6QpwpZgfvu8YFhXToFL6KYSGxE7Yzfd"
     },
     "adquirente2": {
-      "publicKey": "4AtNqTar65zpf4K5JZez1Wwpyddsw2j2yEDf6n239UaN"
+      "publicKey": "4ZMKhX5KZ2oWYbHaaAaQUZxcAiDv2KUcuWUXQ9hwNg6A"
     }
   },
   "tokens": {
     "euroCC": {
-      "mint": "42UUKxi9MhGLr24C9TuZmNpPEabq2LcoqtQk5HtNpGN8",
+      "mint": "5qgCi65QUvazc7kag2VJjtCrXDhLmdaBAbdj8KXp9XvU",
       "name": "EuroCC",
       "symbol": "EUROCC",
       "decimals": 2,
       "initialSupply": 1000000000000
     },
     "bonoDeuda": {
-      "mint": "5NU3HPG5w7sq66guh4CEtgYdUWvDu9N1eHLxYhbawiEr",
+      "mint": "GYzZFwJzo1ZVwVyUyNEc7j4E2v8uU1NJG3vuTxAtHHgF",
       "name": "BonoDeuda",
       "symbol": "BONO",
       "decimals": 0,
