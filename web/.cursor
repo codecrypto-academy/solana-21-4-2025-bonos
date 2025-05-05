@@ -1,0 +1,19 @@
+La aplicacion sera escrita en typescript
+
+El framework de la aplicacion sera nextjs
+
+El gestor de basae de datos es mongodb.
+
+El servidor de base de datos esta en local en el puerto 27017
+
+Pon el el .env la cadena de conexion a la base de datos.
+
+No uses mongoose, usa el driver de mongodb.
+
+Usa los componentes de shadcn/ui
+
+Usa server actions no use el api de nextjs.
+
+no use el api nunca por favor.
+
+Si un componente de react usa hooks debes de poner "use client" al principio del archivo.
