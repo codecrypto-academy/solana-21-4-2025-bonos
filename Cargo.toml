@@ -1,6 +1,0 @@
-[package]
-name = "solana-21-4-2025-bonos"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
