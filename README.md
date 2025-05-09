@@ -18,6 +18,7 @@ El proyecto permite la emisión y compra de bonos de deuda con las siguientes ca
 ## Fases del Proyecto
 
 ### Fase 1: Desarrollo del Script de Prueba.
+[EuroCoin Token](./eurocoin-token/README.md)
 
 - Creacion de wallet (emisor EuroCC, emisor BonoDeuda, adquirente1, adquirente2)
 - Airdrop de SOL a las cuentas necesarias
@@ -62,6 +63,7 @@ Datos del Bono (Actualizados):
  ```
 
 ### Fase 2: Desarrollo de la Aplicación Web para la emisión y compra de bonos usando un MCP server.
+[Web App README](./web/README.md)
 - El mcp server debe permitir:
     - Crear bonos
     - Comprar bonos
