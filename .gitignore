@@ -1,11 +1,11 @@
 # Dependencies
-node_modules/
-package-lock.json
-yarn.lock
+**/node_modules/
+**/package-lock.json
+**/yarn.lock
 
 # TypeScript
 dist/
-build/
+**/build/
 *.tsbuildinfo
 
 # Environment variables
@@ -21,11 +21,12 @@ build/
 .DS_Store
 
 # Solana specific
-wallets/
+**/wallets/
 *.json
 !package.json
 !tsconfig.json
 !token-info.json
+**/test-ledger
 
 # Logs
 logs/
@@ -41,3 +42,8 @@ coverage/
 *.tmp
 *.temp
 .cache/ 
+
+# Web
+**/.next
+**/.cursor
+**/next-env.d.ts
