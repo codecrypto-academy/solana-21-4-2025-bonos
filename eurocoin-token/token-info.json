@@ -1,0 +1,32 @@
+{
+  "wallets": {
+    "emisorEuroCC": {
+      "publicKey": "Gf5WBBazRETT4xHif146i1JSfkRTcM76uvg8kb8XinYq"
+    },
+    "emisorBonoDeuda": {
+      "publicKey": "Dds4hjsafqsCYgGizoYNfftYaa1cqNMYEtfTMYVEkmEt"
+    },
+    "adquirente1": {
+      "publicKey": "D3TDtaNPfQL8EqZPnxuFG7F3DMDnpJdVUEU8zkS7zgc6"
+    },
+    "adquirente2": {
+      "publicKey": "71BHQDXD4xfy3ebbiYm1zSYVJP7H9fkQPnF4BU4fVSB1"
+    }
+  },
+  "tokens": {
+    "euroCC": {
+      "mint": "96fC4CShGTLrxJpvqaVa6y7CGWKdbYdea7chkhumyTVr",
+      "name": "EuroCC",
+      "symbol": "EUROCC",
+      "decimals": 2,
+      "initialSupply": 1000000000000
+    },
+    "bonoDeuda": {
+      "mint": "4Ar9xLsh4qTx2ba5ZvRCPvrypYJsQ94Xudi1rsHBQ6Vb",
+      "name": "BonoDeuda",
+      "symbol": "BONO",
+      "decimals": 0,
+      "initialSupply": 10000
+    }
+  }
+}
