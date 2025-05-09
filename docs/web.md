@@ -1,5 +1,3 @@
-¡Claro! Aquí tienes las especificaciones ordenadas de forma más lógica y secuencial, agrupando funcionalidades relacionadas y siguiendo un flujo de usuario típico:
-
 **I. Autenticación y Gestión de Usuarios/Wallets:**
 
 1.  **Cabecera y Login:**
