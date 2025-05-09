@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { Keypair } from "@solana/web3.js";
 
 export async function getUserAndWallets(userId: string) {
+  console.log("userId", userId);
   const client = await clientPromise;
   const db = client.db();
   const user = await db.collection("users").findOne({ _id: new ObjectId(userId) });
