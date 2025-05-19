@@ -236,6 +236,7 @@ export async function transferTokens(
     }
 }
 
+
 export async function payCupon(tokenBonoMintAddress: string) {
     const connection = new Connection(process.env.SOLANA_URL!, "confirmed");
     const client = await clientPromise;
@@ -276,5 +277,73 @@ export async function payCupon(tokenBonoMintAddress: string) {
         transaction,
         [wallemisorBonoWalletetKeypair]
     );
+    await db.collection("token").updateOne(
+        { mintAddress: tokenBonoMintAddress },
+        {  
+            $push: {
+                payments: {
+                    date: new Date(),
+                    amount: tokenBono.porcentajeCupon * tokenBono.nominal / 100
+                }
+            }
+        }
+    );
+    await db.collection("bonista").updateMany(
+        { tokenMint: tokenBonoMintAddress },
+        { 
+                $push: {
+                    payments: {
+                        date: new Date(),
+                        amount: tokenBono.porcentajeCupon * tokenBono.nominal / 100
+                    }
+                }
+            }
+    );
     return signature;
+}
+
+export async function payNominal(tokenBonoMintAddress: string) {
+    const connection = new Connection(process.env.SOLANA_URL!, "confirmed");
+    const client = await clientPromise;
+    const db = client.db();
+    const tokenBono = await db.collection("token").findOne({ mintAddress: tokenBonoMintAddress });
+    if (!tokenBono) {
+        throw new Error("No se encontró el token bono");
+    }
+    const emisorBonoWallet = await db.collection("wallets").findOne({ address: tokenBono.walletAddress });
+    if (!emisorBonoWallet || !emisorBonoWallet.privateKey) {
+        throw new Error("No se encontró la privateKey del emisor");
+    }
+    const wallemisorBonoWalletetKeypair = Keypair.fromSecretKey(Buffer.from(emisorBonoWallet.privateKey, 'hex'));
+    const bonistas = await db.collection("bonista").find({ tokenMint: tokenBonoMintAddress }).toArray();
+    const transferInstructions = await Promise.all(bonistas.map(async (bonista) => {
+        const sourceTokenAccount = await getOrCreateAssociatedTokenAccount(connection, wallemisorBonoWalletetKeypair, new PublicKey(bonista.stablecoinUsed), new PublicKey(wallemisorBonoWalletetKeypair.publicKey));
+        const walletBonista = await db.collection("wallets").findOne({ address: bonista.address });
+        if (!walletBonista || !walletBonista.privateKey) {
+            throw new Error("No se encontró la privateKey del bonista");
+        }
+        const walletKeypair = Keypair.fromSecretKey(Buffer.from(walletBonista.privateKey, 'hex'));
+        const destinationTokenAccount = await getOrCreateAssociatedTokenAccount(connection, walletKeypair, new PublicKey(bonista.stablecoinUsed), new PublicKey(bonista.address));
+        return createTransferInstruction(
+            sourceTokenAccount.address,
+            destinationTokenAccount.address,
+            wallemisorBonoWalletetKeypair.publicKey,
+            bonista.amount
+        );
+    }));
+    const transaction = new Transaction().add(...transferInstructions);
+    const signature = await sendAndConfirmTransaction(
+        connection,
+        transaction,
+        [wallemisorBonoWalletetKeypair]
+    );
+    await db.collection("token").updateOne(
+        { mintAddress: tokenBonoMintAddress },
+        { $push: { payments: { date: new Date(), amount: tokenBono.nominal } } }
+    );
+    await db.collection("bonista").updateMany(
+        { tokenMint: tokenBonoMintAddress },
+        { $push: { payments: { date: new Date(), amount: tokenBono.nominal } } }
+    );
+    return signature;   
 }

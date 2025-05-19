@@ -28,7 +28,7 @@ export function Header() {
   return (
     <header className="w-full flex justify-between items-center p-4 border-b">
       <Link href="/">
-        <span className="font-bold">Mi App</span>
+        <span className="font-bold">Bonos Deuda</span>
       </Link>
       <nav>
         {/* <Link href="/users">
@@ -56,7 +56,10 @@ export function Header() {
           <b>User:</b> {user || "-"}
         </span>
         <span>
-          <b>Wallet:</b> {wallet ? wallet : "-"}
+          <b>Wallet:</b> 
+          {wallet ? <a href={`https://explorer.solana.com/address/${wallet}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+            {wallet}
+          </a> : "-"}
         </span>
         <div className="flex mt-2 gap-2">
           {!user && (

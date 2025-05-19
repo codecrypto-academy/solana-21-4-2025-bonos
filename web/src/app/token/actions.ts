@@ -2,7 +2,7 @@
 import clientPromise from "@/lib/mongodb";
 import { Keypair } from "@solana/web3.js";
 import { createToken } from "@/lib/solana";
-import { payCupon } from "@/lib/solana";
+import { payCupon, payNominal } from "@/lib/solana";
 
 interface TokenData {
   tipo: string;
@@ -17,6 +17,7 @@ interface TokenData {
 }
 
 export async function getTokens() {
+  console.log("getTokens", process.env.MONGODB_URI);
   const client = await clientPromise;
   const db = client.db();
   const tokens = await db.collection("token").find().toArray();
@@ -96,4 +97,9 @@ export async function cleanTokens() {
 export async function payCuponAction(mintAddress: string) {
   'use server';
   return await payCupon(mintAddress);
+} 
+
+export async function payNominalAction(mintAddress: string) {
+  'use server';
+  return await payNominal(mintAddress);
 } 

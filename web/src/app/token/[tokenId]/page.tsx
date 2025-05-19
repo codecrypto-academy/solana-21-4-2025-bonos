@@ -20,7 +20,11 @@ export default async function TokenDetailPage({ params }: { params: { tokenId: s
   
   return (
     <div className="p-8">
-      <h1 className="text-2xl mb-4">Detalle del Token {token.mintAddress}</h1>
+      <h1 className="text-2xl mb-4">Detalle del Token 
+        <a href={`https://explorer.solana.com/address/${token.mintAddress}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+          {token.mintAddress}
+        </a>
+      </h1>
       <TokenPayCuponClient mintAddress={token.mintAddress} />
       <div className="mb-4">
         <table className="w-full border">
@@ -49,8 +53,16 @@ export default async function TokenDetailPage({ params }: { params: { tokenId: s
               <td className="p-2">{token.nominal}</td>
               <td className="p-2">{token.porcentajeCupon}</td>
               <td className="p-2">{token.anos}</td>
-              <td className="p-2">{token.mintAddress}</td>
-              <td className="p-2">{token.walletAddress}</td>
+              <td className="p-2">
+                <a href={`https://explorer.solana.com/address/${token.mintAddress}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                  {token.mintAddress}
+                </a>
+              </td>
+              <td className="p-2">
+                <a href={`https://explorer.solana.com/address/${token.walletAddress}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                  {token.walletAddress}
+                </a>
+              </td>
               <td className="p-2">{balance}</td>
             </tr>
           </tbody>
@@ -74,9 +86,17 @@ export default async function TokenDetailPage({ params }: { params: { tokenId: s
             {bonistas.map((b, index) => (
               <tr key={index} className="border-b">
                 <td>{b.purchaseDate.toLocaleDateString()}</td>
-                <td className="p-2">{b.address}</td>
+                <td className="p-2">
+                  <a href={`https://explorer.solana.com/address/${b.address}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                    {b.address}
+                  </a>
+                </td>
                 <td className="p-2">{b.amount}</td>
-                <td className="p-2">{b.stablecoinUsed}</td>
+                <td className="p-2">
+                  <a href={`https://explorer.solana.com/address/${b.stablecoinUsed}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                    {b.stablecoinUsed}
+                  </a>
+                </td>
               </tr>
             ))}
           </tbody>

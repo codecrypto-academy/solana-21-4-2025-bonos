@@ -21,7 +21,7 @@ dist/
 .DS_Store
 
 # Solana specific
-**/wallets/
+**/wallets22/
 *.json
 !package.json
 !tsconfig.json

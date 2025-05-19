@@ -16,7 +16,7 @@ interface User {
   name: string;
 }
 
-export default function UserWalletsClient({
+export default function  UserWalletsClient({
   user,
   wallets: initialWallets,
   addWallet,
@@ -135,7 +135,7 @@ export default function UserWalletsClient({
                 <td className="p-4 align-middle text-right">
                   <div className="flex justify-end gap-2">
                   <Button
-                      size="sm"
+                      size="sm" 
                       variant="outline"
                       onClick={async () => {
                         // You would need to implement a function to get and display the balance

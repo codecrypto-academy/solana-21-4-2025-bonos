@@ -151,8 +151,16 @@ export default function TokenClient({ tokens }: { tokens: Token[] }) {
               <TableCell>{token.tipo === "Bono" ? token.nominal : "-"}</TableCell>
               <TableCell>{token.tipo === "Bono" ? token.porcentajeCupon : "-"}</TableCell>
               <TableCell>{token.tipo === "Bono" ? token.anos : "-"}</TableCell>
-              <TableCell>{token.walletAddress}</TableCell>
-              <TableCell>{token.mintAddress}</TableCell>
+              <TableCell>
+                <a href={`https://explorer.solana.com/address/${token.walletAddress}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                  {token.walletAddress}
+                </a>
+              </TableCell>
+              <TableCell>
+                <a href={`https://explorer.solana.com/address/${token.mintAddress}?cluster=custom`} target="_blank" rel="noopener noreferrer">
+                  {token.mintAddress}
+                </a>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
